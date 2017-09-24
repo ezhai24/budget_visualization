@@ -16,14 +16,29 @@ The uploaded .csv file must have the following 5 columns. Though they can be nam
   * USA Rugby Team Registration
   * Conference Dues
   * Treasurer supplies
-  * CIPP
 * Fundraiser
-* Bank
+  * Various fundraisers (ie. Apparel, Ruggerween)
+* Bank (ie. checks, fees)
 * Event
+  * Various events (ie. Ruggerdays, Banquet)
 * Equipment
-* Game
-* Damages
-* Uncategorized
+  * Med kit
+  * Nubbins
+  * Warmup kit
+  * Balls
+  * Uncategorized
 * Coaches
+  * Food
+  * Gift
+  * Apparel
+  * CIPP
+* Damages - Cleaning supplies/repair costs of socials/events
+* Game
+  * Social (for various teams)
+  * Gas (for various teams)
+  * Vans (for various teams)
+  * Parking (for various teams)
+  * Trainer
+* Uncategorized
 * Dues
 * Playoffs
