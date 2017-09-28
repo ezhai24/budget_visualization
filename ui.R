@@ -12,14 +12,30 @@ shinyUI(
     
     fileInput('file', 'Transaction History File (.csv)', accept = c('.csv')),
     
-    sidebarLayout(
-      
-      sidebarPanel(
-        selectInput('type', 'Type', choices=list('All')),
-        selectInput('subtype', 'Subtype', choices=list('----'))
+    tabsetPanel(
+      tabPanel('Trends',
+        sidebarLayout(
+          sidebarPanel(
+            selectInput('type', 'Type', choices=list('All')),
+            selectInput('subtype', 'Subtype', choices=list('----'))
+          ),
+          
+          mainPanel(plotlyOutput('trendPlot'))
+        )
       ),
       
-      mainPanel(plotlyOutput('plot'))
+      tabPanel('Breakdown',
+        sidebarLayout(
+          sidebarPanel(
+            selectInput('breakdown_type', 'Type', choices=list('All')),
+            selectInput('date', 'Breakdown Date', choices=list('----'))
+          ),
+          
+          mainPanel(
+            plotlyOutput('earningsBreakdown')
+          )
+        )
+      )
     )
   )
 )
