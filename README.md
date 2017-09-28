@@ -1,5 +1,5 @@
 # Budget Visualization
-This project was originally built for the UW Women's Rugby Club (UWWRC) to visualize a spreadsheet tracking club income and expenses. It can, however, be used with any type of data so long as it follows the format outlined below and is uploaded as a .csv file.
+This project was originally built for the UW Women's Rugby Club (UWWRC) to visualize a spreadsheet tracking club income and expenses. It can, however, be used with any type of data so long as it follows the format outlined below and is uploaded as a .csv file. **A sample data file is provided in the git repository.**
 
 The project can be found here: (https://ezhai24.shinyapps.io/budget_visualization/)
 

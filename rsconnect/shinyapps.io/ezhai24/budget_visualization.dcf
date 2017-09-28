@@ -5,8 +5,8 @@ account: ezhai24
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 217904
-bundleId: 994439
+bundleId: 1002402
 url: https://ezhai24.shinyapps.io/budget_visualization/
-when: 1506230689.916
+when: 1506631634.79982
 asMultiple: FALSE
 asStatic: FALSE

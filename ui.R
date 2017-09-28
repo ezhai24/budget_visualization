@@ -27,8 +27,8 @@ shinyUI(
       tabPanel('Breakdown',
         sidebarLayout(
           sidebarPanel(
-            selectInput('breakdown_type', 'Type', choices=list('All')),
-            selectInput('date', 'Breakdown Date', choices=list('----'))
+            selectInput('date', 'Breakdown Date', choices=list('----')),
+            selectInput('breakdown_type', 'Type', choices=list('All'))
           ),
           
           mainPanel(
