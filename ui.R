@@ -32,7 +32,10 @@ shinyUI(
           ),
           
           mainPanel(
-            plotlyOutput('earningsBreakdown')
+            fixedRow(
+              column(6, plotlyOutput('earningsBreakdown')),
+              column(6, plotlyOutput('lossesBreakdown'))
+            )
           )
         )
       )
