@@ -1,102 +1,91 @@
-# shiny server
+read.data <- function(inFile, session) {
+  if(!is.null(inFile)) {
+    # read file
+    transactions <- read.csv(inFile$datapath)
+    
+    # clean data
+    colnames(transactions) <- c('date', 'desc', 'amount', 'type', 'subtype')
+    
+    transactions <- transactions %>%
+      # format date as date object
+      mutate(date = as.Date(transactions$date, format='%m/%d/%Y')) %>%
+      
+      # create column for month
+      mutate(month = format(date, '%m')) %>%
+      
+      # create column for year
+      mutate(year = ifelse(month == '12', paste(format(date, '%Y'), '-', as.numeric(format(date, '%Y')) + 1),
+                           ifelse(month == '01' | month == '02', paste(as.numeric(format(date, '%Y')) - 1, '-', format(date, '%Y')), format(date, '%Y'))
+      )) %>%
+      
+      # create column for quarter
+      mutate(quarter = ifelse(month == '09' | month == '10' | month == '11', '3Fall',
+                              ifelse(month == '12'| month == '01' | month == '02', '4Winter',
+                                     ifelse(month == '03' | month == '04' | month == '05', '0Spring',
+                                            ifelse(month == '06' | month == '07' | month == '08', '1Summer', 'Error')
+                                     )
+                              )
+      )) %>%
+      
+      # remove the month column
+      select(-month)
+    
+    return(transactions)
+  }
+}
+
 shinyServer(function(input, output, session) {
-  read_data <- reactive({
-    inFile <- input$file
-    read.csv(inFile$datapath)
-  })
   
+  currentData <- reactive({ read.data(input$file, session) })
+
+  # set types
   observe({
-    if(!is.null(input$file)){
-      transactions <- read_data()
-      colnames(transactions) <- c('date', 'desc', 'amount', 'type', 'subtype')
-      
-      # set types
-      type_options <- transactions %>% select(type) %>% distinct(type)
-      updateSelectInput(session, 'type', choices=as.list(c('All', type_options)))
+    transactions <- currentData()
+
+    if(!is.null(transactions)) {
+      type_options <- transactions %>% distinct(type)
+      updateSelectInput(session, 'type', choices=c('All', as.vector(type_options$type)))
     }
   })
   
+  # set subtypes
   observe({
-    if(!is.null(input$file)){
-      transactions <- read_data()
-      colnames(transactions) <- c('date', 'desc', 'amount', 'type', 'subtype')
-      
-      # set subtypes of selected type
-      subtype_options <- transactions %>% filter(type == input$type) %>% select(subtype) %>% distinct(subtype)
-      updateSelectInput(session, 'subtype', choices=as.list(c('----', subtype_options)))
+    transactions <- currentData()
+    
+    if(input$type != 'All') {
+      subtype_options <- transactions %>% filter(type == input$type) %>% distinct(subtype)
+      updateSelectInput(session, 'subtype', choices = c('----', as.vector(subtype_options$subtype)))
     }
   })
   
-  observe({
-    if(!is.null(input$file)){
-      transactions <- read_data()
-      colnames(transactions) <- c('date', 'desc', 'amount', 'type', 'subtype')
-      
-      # set subtypes of selected type
-      transactions$date <- as.Date(transactions$date, format='%m/%d/%Y')
-      transactions <- transactions %>% mutate(month = format(date, '%m'))
-      transactions <- transactions %>%
-        mutate(year = ifelse(month == '12', paste(format(date, '%Y'), '-', as.numeric(format(date, '%Y')) + 1),
-                             ifelse(month == '01' | month == '02', paste(as.numeric(format(date, '%Y')) - 1, '-', format(date, '%Y')), format(date, '%Y'))
-        ))
-      transactions <- transactions %>%
-        mutate(quarter = ifelse(month == '09' | month == '10' | month == '11', '3Fall',
-                                ifelse(month == '12'| month == '01' | month == '02', '4Winter',
-                                       ifelse(month == '03' | month == '04' | month == '05', '0Spring',
-                                              ifelse(month == '06' | month == '07' | month == '08', '1Summer', 'Error')
-                                       )
-                                )
-        ))
-      transactions <- transactions %>% mutate(year_quarter = paste(substring(quarter, 2), year))
-      date_options <- transactions %>% arrange(year, month) %>% select(year_quarter) %>% distinct(year_quarter)
-      updateSelectInput(session, 'date', choices=as.list(c('----', date_options)))
-    }
-  })
-  
+  # render trend plot
   output$trendPlot <- renderPlotly({
+    transactions <- currentData()
+    
+    # check for an input file
     if(is.null(input$file)) {
       return(NULL)     
-    } else {
-      transactions <- read_data()
-      
-      # clean data
-      colnames(transactions) <- c('date', 'desc', 'amount', 'type', 'subtype')
-      transactions$date <- as.Date(transactions$date, format='%m/%d/%Y')
-      transactions <- transactions %>% mutate(month = format(date, '%m'))
-      transactions <- transactions %>%
-        mutate(year = ifelse(month == '12', paste(format(date, '%Y'), '-', as.numeric(format(date, '%Y')) + 1),
-                             ifelse(month == '01' | month == '02', paste(as.numeric(format(date, '%Y')) - 1, '-', format(date, '%Y')), format(date, '%Y'))
-        ))
-      transactions <- transactions %>%
-        mutate(quarter = ifelse(month == '09' | month == '10' | month == '11', '3Fall',
-                                ifelse(month == '12'| month == '01' | month == '02', '4Winter',
-                                       ifelse(month == '03' | month == '04' | month == '05', '0Spring',
-                                              ifelse(month == '06' | month == '07' | month == '08', '1Summer', 'Error')
-                                       )
-                                )
-        ))
-      transactions <- transactions %>% select(-month)
-      
-      # template with all the quarters
-      template <- transactions %>%
-        group_by(year, quarter) %>%
-        summarize(amount = sum(amount)) %>%
-        mutate(year_quarter = paste(substring(quarter, 2), year)) %>%
-        mutate(amount = 0)
     }
     
-    # filter
+    # template with all the quarters
+    template <- transactions %>%
+      group_by(year, quarter) %>%
+      summarize(amount = sum(amount)) %>%
+      mutate(year_quarter = paste(substring(quarter, 2), year)) %>%
+      mutate(amount = 0)
+    
+    # filter by type
     if(input$type != 'All') {
-      filtered_transactions <- transactions %>% filter(type == input$type)
+      transactions <- transactions %>% filter(type == input$type)
+      
+      # filter by subtype
       if(input$subtype != '----') {
-        filtered_transactions <- filtered_transactions %>% filter(subtype == input$subtype)
+        transactions <- transactions %>% filter(subtype == input$subtype)
       }
-    } else {
-      filtered_transactions <- transactions
     }
     
     # total earnings
-    earnings <- filtered_transactions %>%
+    earnings <- transactions %>%
       filter(amount >= 0) %>%
       group_by(year, quarter) %>%
       summarize(amount = sum(amount)) %>%
@@ -104,9 +93,9 @@ shinyServer(function(input, output, session) {
     earnings <- merge(earnings, template, by = c('year_quarter', 'year', 'quarter'), all=TRUE)
     earnings$amount.x[ is.na(earnings$amount.x) ] <- earnings$amount.y[ is.na(earnings$amount.x) ]
     earnings <- earnings %>% rename(amount = amount.x) %>% select(-amount.y) %>% arrange(year, quarter)
-
+    
     # total losses
-    losses <- filtered_transactions %>%
+    losses <- transactions %>%
       filter(amount <= 0) %>%
       group_by(year, quarter) %>%
       summarize(amount = sum(amount)) %>%
@@ -129,147 +118,20 @@ shinyServer(function(input, output, session) {
       layout(xaxis=list(title='Quarter'), yaxis=list(title='Amount')) %>%
       add_trace(data=earnings, x = ~year_quarter, y = ~amount, type='scatter', mode='line+markers', name='Income',
                 hoverinfo='text', text = ~paste0('Income: $', format(amount, big.mark=','),
-                                                    ifelse(difference < 0,
-                                                        paste0('</br>Loss: ', format(sub('-', '-$', difference), big.mark=',')),
-                                                        paste0('</br>Gain: $', format(difference, big.mark=','))
-                                                    )
-                                                 )
-                ) %>%
-      add_trace(data=losses, x = ~year_quarter, y = ~amount, type='scatter', mode='line+markers', name='Expenses',
-                hoverinfo='text', text = ~paste0('Expense: $', format(amount, big.mark=','),
-                                                    ifelse(difference < 0,
-                                                        paste0('</br>Loss: ', format(sub('-', '-$', difference), big.mark=',')),
-                                                        paste0('</br>Gain: $', format(difference, big.mark=','))
-                                                    )
+                                                 ifelse(difference < 0,
+                                                        paste0('<br>Loss: ', format(sub('-', '-$', difference), big.mark=',')),
+                                                        paste0('<br>Gain: $', format(difference, big.mark=','))
                                                  )
                 )
+      ) %>%
+      add_trace(data=losses, x = ~year_quarter, y = ~amount, type='scatter', mode='line+markers', name='Expenses',
+                hoverinfo='text', text = ~paste0('Expense: $', format(amount, big.mark=','),
+                                                 ifelse(difference < 0,
+                                                        paste0('<br>Loss: ', format(sub('-', '-$', difference), big.mark=',')),
+                                                        paste0('<br>Gain: $', format(difference, big.mark=','))
+                                                 )
+                )
+      )
   })
   
-  output$earningsBreakdown <- renderPlotly({
-    if(is.null(input$file)) {
-      return(NULL)     
-    } else {
-      transactions <- read_data()
-      
-      # clean data
-      colnames(transactions) <- c('date', 'desc', 'amount', 'type', 'subtype')
-      transactions$date <- as.Date(transactions$date, format='%m/%d/%Y')
-      transactions <- transactions %>% mutate(month = format(date, '%m'))
-      transactions <- transactions %>%
-        mutate(year = ifelse(month == '12', paste(format(date, '%Y'), '-', as.numeric(format(date, '%Y')) + 1),
-                             ifelse(month == '01' | month == '02', paste(as.numeric(format(date, '%Y')) - 1, '-', format(date, '%Y')), format(date, '%Y'))
-        ))
-      transactions <- transactions %>%
-        mutate(quarter = ifelse(month == '09' | month == '10' | month == '11', '3Fall',
-                                ifelse(month == '12'| month == '01' | month == '02', '4Winter',
-                                       ifelse(month == '03' | month == '04' | month == '05', '0Spring',
-                                              ifelse(month == '06' | month == '07' | month == '08', '1Summer', 'Error')
-                                       )
-                                )
-        ))
-      transactions <- transactions %>% select(-month)
-      
-      # get subtypes of current type
-      subtype_options <- transactions %>% filter(type == input$breakdown_type, subtype != '') %>% select(subtype) %>% distinct(subtype)
-    }
-    
-    
-    # filter
-    if(input$date != '----' && input$breakdown_type == 'All') {
-      earnings <- transactions %>%
-        filter(amount >= 0) %>%
-        mutate(year_quarter = paste(substring(quarter, 2), year)) %>%
-        filter(year_quarter == input$date) %>%
-        group_by(type) %>%
-        summarize(amount = sum(amount))
-      
-      plot_ly(data=earnings, labels = ~type, values = ~amount, type='pie') %>%
-        layout(title = 'Income Breakdown',
-               xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
-               yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
-    } else if(input$date != '----' && nrow(subtype_options) != 0) {
-      earnings <- transactions %>%
-        filter(amount >= 0, type == input$breakdown_type) %>%
-        mutate(year_quarter = paste(substring(quarter, 2), year)) %>%
-        filter(year_quarter == input$date) %>%
-        group_by(subtype) %>%
-        summarize(amount = sum(amount))
-        
-      plot_ly(data=earnings, labels = ~subtype, values = ~amount, type='pie') %>%
-        layout(title = 'Income Breakdown',
-               xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
-               yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
-    } else {
-      plot_ly() %>%
-        layout(title = 'No data to be shown.<br>OR<br>No further breakdown can be done.',
-               xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
-               yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
-    }
-  })
-  
-  output$lossesBreakdown <- renderPlotly({
-    if(is.null(input$file)) {
-      return(NULL)     
-    } else {
-      transactions <- read_data()
-      
-      # clean data
-      colnames(transactions) <- c('date', 'desc', 'amount', 'type', 'subtype')
-      transactions$date <- as.Date(transactions$date, format='%m/%d/%Y')
-      transactions <- transactions %>% mutate(month = format(date, '%m'))
-      transactions <- transactions %>%
-        mutate(year = ifelse(month == '12', paste(format(date, '%Y'), '-', as.numeric(format(date, '%Y')) + 1),
-                             ifelse(month == '01' | month == '02', paste(as.numeric(format(date, '%Y')) - 1, '-', format(date, '%Y')), format(date, '%Y'))
-        ))
-      transactions <- transactions %>%
-        mutate(quarter = ifelse(month == '09' | month == '10' | month == '11', '3Fall',
-                                ifelse(month == '12'| month == '01' | month == '02', '4Winter',
-                                       ifelse(month == '03' | month == '04' | month == '05', '0Spring',
-                                              ifelse(month == '06' | month == '07' | month == '08', '1Summer', 'Error')
-                                       )
-                                )
-        ))
-      transactions <- transactions %>% select(-month)
-      
-      # get subtypes of current type
-      subtype_options <- transactions %>% filter(type == input$breakdown_type, subtype != '') %>% select(subtype) %>% distinct(subtype)
-    }
-    
-    
-    # filter
-    if(input$date != '----' && input$breakdown_type == 'All') {
-      losses <- transactions %>%
-        filter(amount <= 0) %>%
-        mutate(year_quarter = paste(substring(quarter, 2), year)) %>%
-        filter(year_quarter == input$date) %>%
-        group_by(type) %>%
-        summarize(amount = sum(amount)) %>%
-        mutate(amount = amount * -1)
-        
-      plot_ly(data=losses, labels = ~type, values = ~amount, type='pie') %>%
-        layout(title = 'Expenses Breakdown',
-               xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
-               yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
-    } else if(input$date != '----' && nrow(subtype_options) != 0) {
-      losses <- transactions %>%
-        filter(amount <= 0, type == input$breakdown_type) %>%
-        mutate(year_quarter = paste(substring(quarter, 2), year)) %>%
-        filter(year_quarter == input$date) %>%
-        group_by(subtype) %>%
-        summarize(amount = sum(amount)) %>%
-        mutate(amount = amount * -1)
-      
-      plot_ly(data=losses, labels = ~subtype, values = ~amount, type='pie') %>%
-        layout(title = 'Expense Breakdown',
-               xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
-               yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
-    } else {
-      plot_ly() %>%
-        layout(title = 'No data to be shown.<br>OR<br>No further breakdown can be done.',
-               xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
-               yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
-    }
-  })
 })
-
-
