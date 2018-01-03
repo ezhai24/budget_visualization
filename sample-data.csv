@@ -1,196 +1,21 @@
 ﻿Date,Description,Amount,Type,SubType
-9/11/2017,USA Rugby,-161.50,Administrative,USA Rugby Team Registration
-9/11/2017,IMA Reimbursement,500.00,Administrative,Conference Dues
-9/5/2017,IMA Reimbursement,200.00,Administrative,Conference Dues
-8/16/2017,Sounders Tickets,-965.00,Fundraiser,Sounders
-7/17/2017,Printing Checks,-31.44,Bank,
-2/3/2017,City Catering Company,613.00,Fundraiser,Catering
-3/3/2017,MOD Pizza,158.03,Fundraiser,Catering
-2/28/2017,Kotis,1330.00,Fundraiser,Apparel
-7/13/2017,Keg Deposit Return,50.00,Event,Alumni Weekend
-6/5/2017,Hobby Lobby,-68.28,Event,Banquet
-6/5/2017,Shutterfly: EOY Gifts,-110.08,Event,Banquet
-6/1/2017,Thai 65: EOY Food,-425.70,Event,Banquet
-6/1/2017,Personalization: EOY Gifts,-48.93,Event,Banquet
-6/1/2017,Amazon,-18.79,Event,Banquet
-5/31/2017,Amazon,-43.19,Event,Banquet
-5/30/2017,Safeway,-83.53,Event,Rookie Grad
-5/22/2017,America's Best Hotel,-1203.75,Event,Maggotfest
-5/12/2017,School Health Co.,-426.73,Equipment,Med Kit
-5/8/2017,Dawg Pound Beer,-115.59,Event,Alumni Weekend
-5/8/2017,Dawg Pound Beer Keg Deposit,-55.00,Event,Alumni Weekend
-5/8/2017,Rossow's U-Tote-Em,-8.33,Coaches,Food
-5/4/2017,Amazon,-54.88,Event,Prom Social
-5/1/2017,CustomInk,-387.77,Event,Maggotfest
-5/1/2017,CustomInk,-359.40,Event,Maggotfest
-4/21/2017,Target,-11.00,Damages,
-4/19/2017,WAC Rental,-160.00,Event,Banquet
-4/12/2017,CreateaStole: EOY Gifts,-475.20,Event,Banquet
-4/10/2017,Park Reservation,-66.00,Event,Camping
-4/10/2017,Park Reservation,-33.00,Event,Camping
-4/10/2017,Park Reservation,-33.00,Event,Camping
-3/20/2017,World Rugby,98.88,Uncategorized,
-3/6/2017,Little Ceasar,-78.78,Game,UO Social
-3/6/2017,Dawg Pound Beer,-104.12,Game,UO Social
-2/27/2017,Shell Gas,-30.20,Game,OSU Gas
-2/27/2017,Shell Gas,-27.84,Game,OSU Gas
-2/27/2017,KT Kanso Gas,-67.58,Game,OSU Gas
-2/27/2017,KT Kanso Gas,-65.94,Game,OSU Gas
-2/27/2017,Bugerville,-24.13,Coaches,Food
-2/27/2017,Firehouse Express,-20.56,Coaches,Food
-2/21/2017,Elevage Wine,-27.28,Coaches,Food
-2/21/2017,Rossow's U-Tote-Em,-18.93,Coaches,Food
-2/21/2017,Exxon Mobile,-38.92,Game,WSU Gas
-2/21/2017,Safeway,-23.71,Game,WSU Social
-2/21/2017,Safeway,-3.29,Coaches,Food
-2/21/2017,Holiday Inn Express,-119.68,Coaches,Food
-2/21/2017,Chevron,-24.91,Game,WSU Gas
-2/21/2017,Starbucks,-7.47,Coaches,Food
-2/13/2017,Little Ceasars,-111.61,Game,WSU Social
-2/13/2017,QFC,-11.94,Game,WSU Social
-2/10/2017,Kotis,-370.14,Fundraiser,Apparel
-2/9/2017,Costco,-50.39,Game,WSU Social
-2/6/2017,Noodles & Company,-23.35,Coaches,Food
-2/3/2017,Home Depot,-8.71,Equipment,Nubbins
-1/30/2017,QFC,-13.93,Uncategorized,
-1/27/2017,Costco,-83.63,Game,OSU Social
-1/24/2017,QFC,-27.39,Coaches,Gift
-1/17/2017,Deposit,459.00,Equipment,Warmup Kit
-1/12/2017,World Rugby,-108.87,Equipment,Balls
-11/18/2016,Choke Shirt Company,-647.41,Equipment,Warmup Kit
-11/15/2016,Analysis Service Charge,-1.60,Bank,
-11/15/2016,Ruggers Retail,-14.98,Equipment,Warmup Kit
-11/14/2016,Deposit,40.00,Equipment,Warmup Kit
-11/14/2016,Dawg Pound Beer,-127.13,Game,WWU Social
-11/8/2016,Ruggers Retail,-1374.50,Equipment,Warmup Kit
-11/4/2016,Deposit,400.00,Dues,
-10/28/2016,Deposit,4613.00,Fundraiser,Ruggerween
-10/24/2016,Dawg Pound Beer,-416.53,Fundraiser,Ruggerween
-10/24/2016,Target,-11.01,Fundraiser,Ruggerween
-10/24/2016,Office Depot,-24.44,Administrative,Treasurer supplies
-10/24/2016,Safeway,-16.40,Fundraiser,Ruggerween
-10/24/2016,QFC,-32.35,Damages,
-10/24/2016,Safeway,-38.34,Damages,
-10/21/2016,Costco,-89.44,Fundraiser,Ruggerween
-10/21/2016,Fred Meyer,-242.12,Fundraiser,Ruggerween
-10/19/2016,Deposit,875.00,Dues,
-10/19/2016,Deposit,235.00,Dues,
-10/18/2016,QFC,-26.24,Coaches,Gift
-10/14/2016,Costco,-73.88,Game,Eastern Social
-10/3/2016,Walgreens,-39.75,Damages,
-9/30/2016,Kotis,-929.85,Coaches,Apparel
-9/30/2016,Costco,-93.81,Event,Rookie Clinic
+9/28/2016,CIPP Reimbursement,-66.5,Coaches,CIPP
 9/29/2016,Office Depot,-32.06,Administrative,Treasurer supplies
-4/1/2017,WWU Gas,-12.60,Game,WWU Gas
-4/1/2017,WWU Gas,-12.60,Game,WWU Gas
-4/1/2017,WWU Gas,-12.60,Game,WWU Gas
-4/1/2017,WWU Gas,-22.90,Game,WWU Gas
-4/1/2017,WWU Gas,-25.20,Game,WWU Gas
-4/19/2017,OSU Gas,-68.35,Game,OSU Gas
-4/17/2017,OSU Gas,-52.40,Game,OSU Gas
-5/6/2017,OSU Gas and Food,-105.00,Game,OSU Gas
-5/8/2017,OSU Gas,-78.60,Game,OSU Gas
-5/8/2017,Camping,-21.00,Event,Camping
-5/8/2017,Camping,-20.09,Event,Camping
-5/8/2017,Camping,-14.90,Event,Camping
-5/8/2017,Camping,-17.77,Event,Camping
-5/8/2017,Central Gas,-22.20,Game,Central Gas
-5/8/2017,Central Gas,-22.20,Game,Central Gas
-5/8/2017,Central Gas,-33.30,Game,Central Gas
-5/8/2017,Maggotfest Gas,-91.46,Event,Maggotfest
-5/8/2017,Maggotfest Gas,-91.46,Event,Maggotfest
-5/8/2017,Maggotfest Gas,-137.17,Event,Maggotfest
-5/8/2017,Maggotfest Gas,-94.61,Event,Maggotfest
-5/8/2017,Maggotfest Gas,-111.21,Event,Maggotfest
-6/21/2017,Rugby Equipment,-91.46,Equipment,Med Kit
-3/31/2016,Playoffs,-286.78,Playoffs,
-4/22/2016,Playoffs,-111.57,Playoffs,
-4/27/2016,Banquet,-205.34,Event,Banquet
-4/29/2016,Banquet,-14.00,Event,Banquet
-6/1/2016,Banquet WAC Rental,-140.00,Event,Banquet
-6/20/2016,Team Stuff,-248.90,Equipment,Uncategorized
-9/28/2016,CIPP Reimbursement,-66.50,Coaches,CIPP
-10/23/2016,Rookie Reveal,-28.13,Event,Rookie Reveal
-2/28/2017,WSU Stuff,-64.00,Game,Uncategorized
-11/14/2016,Dues Refund,-245.00,Dues,
+9/30/2016,Kotis,-929.85,Coaches,Apparel
+10/12/2016,Dues,194.5,Dues,
+10/18/2016,Dues,200,Dues,
 12/14/2016,Ruggerdays,-43.44,Event,Ruggerdays
 12/14/2016,Ruggerdays,-52.58,Event,Ruggerdays
-1/18/2017,ATAVUS,-500.00,Event,Atavus Camp
-2/4/2017,UO Gas,-35.91,Game,UO Gas
-2/4/2017,UO Gas,-57.46,Game,UO Gas
-2/4/2017,UO Gas,-43.53,Game,UO Gas
-2/4/2017,UO Gas,-68.40,Game,UO Gas
-2/4/2017,UO Gas,-71.82,Game,UO Gas
-2/4/2017,UO Gas,-62.45,Game,UO Gas
-2/4/2017,UO Gas,-34.20,Game,UO Gas
-2/28/2017,UO Gas,-417.24,Game,UO Vans
-2/18/2017,WSU Vans,-461.84,Game,WSU Vans
-2/18/2017,WSU Parking,-38.16,Game,WSU Parking
-2/18/2017,WSU Vans Gas,-103.72,Game,WSU Gas
-2/27/2017,Conference Dues,-700.00,Administrative,Conference Dues
-2/18/2017,WSU Gas,-35.62,Game,WSU Gas
-3/4/2017,UO Trainer,-150.00,Game,Trainer
-6/23/2017,,-96.80,Uncategorized,
-6/22/2017,Camping,-14.90,Event,Camping
-6/22/2017,Camping,-17.77,Event,Camping
-6/22/2017,Banquet,-94.00,Event,Banquet
-6/22/2017,Alumni Weekend,-143.74,Event,Alumni Weekend
-6/8/2017,,-10.99,Uncategorized,
-6/8/2017,,-23.00,Uncategorized,
+12/21/2016,Dues,105,Dues,
+1/11/2017,Dues,100,Dues,
+1/12/2017,World Rugby,-108.87,Equipment,Balls
+3/6/2017,Little Ceasar,-78.78,Game,Social
+4/1/2017,WWU Gas,-12.6,Game,Gas
+4/1/2017,WWU Gas,-12.6,Game,Gas
+4/1/2017,WWU Gas,-12.6,Game,Gas
+4/10/2017,Park Reservation,-33,Event,Camping
 6/6/2017,Rookie Grad,-6.94,Event,Rookie Grad
 6/6/2017,Rookie Grad,-8.48,Event,Rookie Grad
-6/6/2017,Rookie Grad,-10.00,Event,Rookie Grad
-6/6/2017,Rookie Grad,-10.04,Event,Rookie Grad
-6/6/2017,Rookie Grad,-52.69,Event,Rookie Grad
-6/6/2017,,-52.69,Uncategorized,
-6/6/2017,OSU Gas,-78.60,Game,OSU Gas
+6/6/2017,OSU Gas,-78.6,Game,Gas
 6/6/2017,Alumni Weekend,-81.34,Event,Alumni Weekend
-6/6/2017,,-126.26,Uncategorized,
-6/6/2017,,-137.17,Uncategorized,
-5/26/2017,,74.00,Uncategorized,
-5/23/2017,Maggotfest,172.42,Event,Maggotfest
-5/22/2017,Maggotfest,180.42,Event,Maggotfest
-5/18/2017,Maggotfest,330.84,Event,Maggotfest
-5/16/2017,Maggotfest,604.26,Event,Maggotfest
-5/11/2017,Maggotfest,408.63,Event,Maggotfest
-5/11/2017,Maggotfest,172.42,Event,Maggotfest
-5/11/2017,Maggotfest,172.42,Event,Maggotfest
-5/10/2017,Maggotfest,86.21,Event,Maggotfest
-5/10/2017,Maggotfest,172.42,Event,Maggotfest
-5/10/2017,,23.96,Uncategorized,
-5/10/2017,,-276.25,Uncategorized,
-5/10/2017,,-385.00,Uncategorized,
-3/3/2017,Dues,150.00,Dues,
-1/31/2017,Dues,137.00,Dues,
-1/30/2017,Dues,448.00,Dues,
-1/30/2017,,7.00,Uncategorized,
-1/30/2017,,27.00,Uncategorized,
-1/19/2017,Dues,45.00,Dues,
-1/18/2017,Dues,50.00,Dues,
-1/17/2017,Dues,80.00,Dues,
-1/13/2017,Dues,155.00,Dues,
-1/11/2017,Dues,100.00,Dues,
-12/21/2016,Dues,105.00,Dues,
-12/6/2016,,41.00,Uncategorized,
-12/6/2016,Dues,45.00,Dues,
-12/6/2016,Dues,95.00,Dues,
-11/30/2016,Dues,45.00,Dues,
-11/28/2016,Dues,45.00,Dues,
-11/22/2016,Dues,50.00,Dues,
-11/7/2016,Dues,95.00,Dues,
-11/1/2016,Dues,250.00,Dues,
-10/25/2016,Dues,405.00,Dues,
-10/25/2016,,10.00,Uncategorized,
-10/20/2016,Dues,200.00,Dues,
-10/19/2016,Dues,300.00,Dues,
-10/19/2016,Dues,200.00,Dues,
-10/18/2016,Dues,200.00,Dues,
-3/6/2017,,116.32,Uncategorized,
-10/28/2016,Dues,435.96,Dues,
-10/28/2016,Warmup Kit,76.52,Equipment,Warmup Kit
-10/23/2016,Ruggerween,1110.90,Fundraiser,Ruggerween
-10/23/2016,Dues,778.00,Dues,
-10/23/2016,Warmup Kit,38.26,Equipment,Warmup Kit
-10/19/2016,Dues,1567.00,Dues,
-10/19/2016,Warmup Kit,76.52,Equipment,Warmup Kit
-10/12/2016,Dues,194.50,Dues,
+6/21/2017,Rugby Equipment,-91.46,Equipment,Med Kit

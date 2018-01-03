@@ -15,17 +15,6 @@ shinyServer(function(input, output, session) {
       updateSelectInput(session, 'type', choices=as.list(c('All', type_options)))
     }
   })
-
-  observe({
-    if(!is.null(input$file)){
-      transactions <- read_data()
-      colnames(transactions) <- c('date', 'desc', 'amount', 'type', 'subtype')
-      
-      # set types
-      type_options <- transactions %>% select(type) %>% distinct(type)
-      updateSelectInput(session, 'breakdown_type', choices=as.list(c('All', type_options)))
-    }
-  })
   
   observe({
     if(!is.null(input$file)){
