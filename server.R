@@ -52,7 +52,7 @@ shinyServer(function(input, output, session) {
   observe({
     transactions <- currentData()
     
-    if(input$type != 'All') {
+    if(!is.null(input$file)) {
       subtype_options <- transactions %>% filter(type == input$type) %>% distinct(subtype)
       updateSelectInput(session, 'subtype', choices = c('----', as.vector(subtype_options$subtype)))
     }
@@ -105,11 +105,11 @@ shinyServer(function(input, output, session) {
     losses$amount.x[ is.na(losses$amount.x) ] <- losses$amount.y[ is.na(losses$amount.x) ]
     losses <- losses %>% rename(amount = amount.x) %>% select(-amount.y) %>% arrange(year, quarter)
     
-    # add difference columns
+    # profit/loss columns
     earnings$difference <- earnings$amount - losses$amount
     losses$difference <- earnings$amount - losses$amount 
     
-    # sort for plot labels
+    # sort by year and quarter
     earnings$year_quarter <- factor(earnings$year_quarter, levels = earnings$year_quarter[order(earnings$year, earnings$quarter)])
     losses$year_quarter <- factor(losses$year_quarter, levels = losses$year_quarter[order(losses$year, losses$quarter)])
     
