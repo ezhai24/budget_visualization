@@ -170,23 +170,24 @@ shinyServer(function(input, output, session) {
     # filter
     if(input$date != '----' && input$breakdown_type == 'All') {
       earnings <- transactions %>%
-        filter(amount >= 0) %>%
         mutate(year_quarter = paste(substring(quarter, 2), year)) %>%
         filter(year_quarter == input$date) %>%
         group_by(type) %>%
-        summarize(amount = sum(amount))
-      
+        summarize(amount = sum(amount)) %>%
+        filter(amount >= 0)
+    
       plot_ly(data=earnings, labels = ~type, values = ~amount, type='pie') %>%
         layout(title = 'Income Breakdown',
                xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
                yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
     } else if(input$date != '----' && nrow(subtype_options) != 0) {
       earnings <- transactions %>%
-        filter(amount >= 0, type == input$breakdown_type) %>%
+        filter(type == input$breakdown_type) %>%
         mutate(year_quarter = paste(substring(quarter, 2), year)) %>%
         filter(year_quarter == input$date) %>%
         group_by(subtype) %>%
-        summarize(amount = sum(amount))
+        summarize(amount = sum(amount)) %>%
+        filter(amount >= 0)
       
       plot_ly(data=earnings, labels = ~subtype, values = ~amount, type='pie') %>%
         layout(title = 'Income Breakdown',
@@ -217,11 +218,11 @@ shinyServer(function(input, output, session) {
     # filter
     if(input$date != '----' && input$breakdown_type == 'All') {
       losses <- transactions %>%
-        filter(amount <= 0) %>%
         mutate(year_quarter = paste(substring(quarter, 2), year)) %>%
         filter(year_quarter == input$date) %>%
         group_by(type) %>%
         summarize(amount = sum(amount)) %>%
+        filter(amount <= 0) %>%
         mutate(amount = amount * -1)
       
       plot_ly(data=losses, labels = ~type, values = ~amount, type='pie') %>%
@@ -230,11 +231,12 @@ shinyServer(function(input, output, session) {
                yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
     } else if(input$date != '----' && nrow(subtype_options) != 0) {
       losses <- transactions %>%
-        filter(amount <= 0, type == input$breakdown_type) %>%
+        filter(type == input$breakdown_type) %>%
         mutate(year_quarter = paste(substring(quarter, 2), year)) %>%
         filter(year_quarter == input$date) %>%
         group_by(subtype) %>%
         summarize(amount = sum(amount)) %>%
+        filter(amount <= 0) %>%
         mutate(amount = amount * -1)
       
       plot_ly(data=losses, labels = ~subtype, values = ~amount, type='pie') %>%
