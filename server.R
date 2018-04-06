@@ -19,10 +19,10 @@ read.data <- function(inFile, session) {
       )) %>%
       
       # create column for quarter
-      mutate(quarter = ifelse(month == '09' | month == '10' | month == '11', '3Fall',
-                              ifelse(month == '12'| month == '01' | month == '02', '4Winter',
-                                     ifelse(month == '03' | month == '04' | month == '05', '0Spring',
-                                            ifelse(month == '06' | month == '07' | month == '08', '1Summer', 'Error')
+      mutate(quarter = ifelse(month == '09' | month == '10' | month == '11', '3F',
+                              ifelse(month == '12'| month == '01' | month == '02', '4W',
+                                     ifelse(month == '03' | month == '04' | month == '05', '0Sp',
+                                            ifelse(month == '06' | month == '07' | month == '08', '1Su', 'Error')
                                      )
                               )
       ))
