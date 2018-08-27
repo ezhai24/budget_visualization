@@ -26,19 +26,16 @@ The uploaded .csv file must have the following 5 columns. Though they can be nam
   * Nubbins
   * Warmup kit
   * Balls
-  * Uncategorized
 * Coaches
   * Food
-  * Gift
   * Apparel
   * CIPP
-* Damages - Cleaning supplies/repair costs of socials/events
+* Damages - Cleaning supplies/repair costs
 * Game
-  * Social (for various teams)
-  * Gas (for various teams)
-  * Vans (for various teams)
-  * Parking (for various teams)
+  * Social
+  * Gas
+  * Vans
+  * Parking
   * Trainer
-* Uncategorized
 * Dues
 * Playoffs
