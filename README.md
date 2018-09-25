@@ -8,8 +8,8 @@ The uploaded .csv file must have the following 5 columns. Though they can be nam
 * Date - The date the transaction occured in mm/dd/yyyy format.
 * Description - A description of the transaction. Used for UWWRC records but not in app so can be left blank.
 * Amount - The amount of money deposited or withdrawn in the transaction. If withdrawn, the number should be negative.
-* Type - A type category associated with the transaction. Can be left blank.
-* Subtype - A subtype category associated with the transaction. Can be left blank.
+* Type - A type category associated with the transaction. Do not leave blank. (Use a stand-in like "--" or "other" for transactions without a type.)
+* Subtype - A subtype category associated with the transaction. Do not leave blank. (Use a stand-in like "--" or "other" for transactions without a type.)
 
 ## UWWRC Types & Subtypes
 * Administrative
