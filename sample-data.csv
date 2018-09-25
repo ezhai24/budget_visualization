@@ -1,23 +1,23 @@
-﻿Date,Description,Amount,Type,SubType
-9/28/2016,CIPP Reimbursement,-66.5,Coaches,CIPP
-9/29/2016,Office Depot,-32.06,Administrative,Treasurer supplies
-9/30/2016,Kotis,-929.85,Coaches,Apparel
-10/12/2016,Dues,194.5,Dues,
-10/18/2016,Dues,200,Dues,
-12/14/2016,Ruggerdays,-43.44,Event,Ruggerdays
-12/14/2016,Ruggerdays,-52.58,Event,Ruggerdays
-12/21/2016,Dues,105,Dues,
-1/11/2017,Dues,100,Dues,
-1/12/2017,World Rugby,-108.87,Equipment,Balls
-3/6/2017,Little Ceasar,-78.78,Game,Social
-4/1/2017,WWU Gas,-12.6,Game,Gas
-4/1/2017,WWU Gas,-12.6,Game,Gas
-4/1/2017,WWU Gas,-12.6,Game,Gas
-4/10/2017,Park Reservation,-33,Event,Camping
-6/6/2017,Rookie Grad,-6.94,Event,Rookie Grad
-6/6/2017,Rookie Grad,-8.48,Event,Rookie Grad
-6/6/2017,OSU Gas,-78.6,Game,Gas
-6/6/2017,Alumni Weekend,-81.34,Event,Alumni Weekend
-6/21/2017,Rugby Equipment,-91.46,Equipment,Med Kit
-6/22/2017,Rugby Equipment,-45.23,Equipment,Other
-6/23/2017,Rugby Equipment,10.67,Equipment,Other
+Date	Description	Amount	Type	SubType
+9/28/2016	CIPP Reimbursement	-66.5	Coaches	CIPP
+9/29/2016	Office Depot	-32.06	Administrative	Treasurer supplies
+9/30/2016	Kotis	-929.85	Coaches	Apparel
+10/12/2016	Dues	194.5	Dues	--
+10/18/2016	Dues	200	Dues	--
+12/14/2016	Ruggerdays	-43.44	Event	Ruggerdays
+12/14/2016	Ruggerdays	-52.58	Event	Ruggerdays
+12/21/2016	Dues	105	Dues	--
+1/11/2017	Dues	100	Dues	--
+1/12/2017	World Rugby	-108.87	Equipment	Balls
+3/6/2017	Little Ceasar	-78.78	Game	Social
+4/1/2017	WWU Gas	-12.6	Game	Gas
+4/1/2017	WWU Gas	-12.6	Game	Gas
+4/1/2017	WWU Gas	-12.6	Game	Gas
+4/10/2017	Park Reservation	-33	Event	Camping
+6/6/2017	Rookie Grad	-6.94	Event	Rookie Grad
+6/6/2017	Rookie Grad	-8.48	Event	Rookie Grad
+6/6/2017	OSU Gas	-78.6	Game	Gas
+6/6/2017	Alumni Weekend	-81.34	Event	Alumni Weekend
+6/21/2017	Rugby Equipment	-91.46	Equipment	Med Kit
+6/22/2017	Rugby Equipment	-45.23	Equipment	Other
+6/23/2017	Rugby Equipment	10.67	Equipment	Other
